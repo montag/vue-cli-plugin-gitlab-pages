@@ -1,0 +1,64 @@
+# ------------ Node Version ----------------------
+.node-image: &node-image
+  image: node:<%- options.nodeVersion %>
+
+# ------------  CI Stages ------------------------
+stages:
+  - build
+  - lint-frontend
+  - unit-test
+  - deploy
+
+# ------------ Build Front End -------------------
+build-frontend:
+  <<: *node-image
+  stage: build
+  artifacts:
+    untracked: true
+  cache:
+      paths:
+      - node_modules/
+  script:
+    - yarn install
+    - yarn run build
+# ------------ End of Build Front End ------------
+
+<%_ if (options.enableLinting) { _%>
+# ------------ Lint Front End
+lint-frontend:
+  <<: *node-image
+  stage: lint-frontend
+  dependencies:
+    - build-frontend
+  script:
+    - yarn run ci:lint
+# ------------ End of Lint Front End  ------------
+<%_ } _%>
+
+<%_ if (options.enableUnitTesting) { _%>
+# ------------ Unit Test Front End  --------------
+test-frontend:
+  <<: *node-image
+  stage: unit-test
+  dependencies:
+    - build-frontend
+  script:
+    - yarn run test:unit
+# ------------ End of Unit Test Front End --------
+<%_ } _%>
+
+# ------------ Deploy Front End ------------------
+pages:
+  <<: *node-image
+  stage: deploy
+  dependencies:
+      - build-frontend
+  script:
+    - mv public public-vue
+    - mv dist public
+  artifacts:
+    paths:
+      - public
+  only:
+    - <%- options.ciBranch %>
+# ------------ End of Deploy Front End -----------

@@ -1,0 +1,25 @@
+{
+  "name": "vue-cli-plugin-gitlab-pages",
+  "version": "0.1.0",
+  "description": "Vue-cli plugin to generate full CI pipeline for Gitlab Pages.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/montag/vue-cli-plugin-gitlab-pages.git"
+  },
+  "keywords": [
+    "vue",
+    "cli",
+    "gitlab",
+    "pages",
+    "ci",
+    "deploy",
+    "static"
+  ],
+  "author": "Montag",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/montag/vue-cli-plugin-gitlab-pages/issues"
+  },
+  "homepage": "https://gitlab.com/montag/vue-cli-plugin-gitlab-pages/blob/master/README.md"
+}
