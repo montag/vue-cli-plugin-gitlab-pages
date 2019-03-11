@@ -53,7 +53,7 @@ Upon installation the plugin will prompt for several options.
  ## Installing in an Already Created Project
  
  ``` sh
- vue add vue-cli-plugins-gitlab-pages
+ vue add gitlab-pages
  ```
  
  ## Troubleshooting
