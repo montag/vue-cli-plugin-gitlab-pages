@@ -24,7 +24,7 @@ build-frontend:
 # ------------ End of Build Front End ------------
 
 <%_ if (options.enableLinting) { _%>
-# ------------ Lint Front End
+# ------------ Lint Front End --------------------
 lint-frontend:
   <<: *node-image
   stage: lint-frontend
@@ -32,11 +32,11 @@ lint-frontend:
     - build-frontend
   script:
     - yarn run ci:lint
-# ------------ End of Lint Front End  ------------
+# ------------ End of Lint Front End -------------
 <%_ } _%>
 
 <%_ if (options.enableUnitTesting) { _%>
-# ------------ Unit Test Front End  --------------
+# ------------ Unit Test Front End ---------------
 test-frontend:
   <<: *node-image
   stage: unit-test
